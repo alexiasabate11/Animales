@@ -1,5 +1,15 @@
 ﻿@model ProyectoMVC_AlexiaSabate.Models.ViewModels.DetailAnimalViewModel
 
+@{
+	var errorMessage = ViewBag.NoAnimal as string;
+}
+
+@if(!string.IsNullOrEmpty(errorMessage))
+{
+	<div class="alert alert-danger" role="alert">
+		@errorMessage
+	</div>
+}
 <h2>Detalles del Animal</h2>
 
 <p>ID: @Model.AnimalDetail.IdAnimal</p>

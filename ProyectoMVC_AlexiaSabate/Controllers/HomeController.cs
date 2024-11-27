@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ProyectoMVC_AlexiaSabate.DAL;
 using ProyectoMVC_AlexiaSabate.Models;
 using ProyectoMVC_AlexiaSabate.Models.ViewModels;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 
 namespace ProyectoMVC_AlexiaSabate.Controllers
 {
@@ -24,7 +26,6 @@ namespace ProyectoMVC_AlexiaSabate.Controllers
             viewModel.Animales = dalAnimal.GetAll();
             viewModel.TipoAnimales = dalTipoAnimal.GetAll();
 
-
             return View(viewModel);
         }
 
@@ -40,15 +41,31 @@ namespace ProyectoMVC_AlexiaSabate.Controllers
         }
 
         [HttpPost]
-        public ActionResult AnimalDetail(int id)
+        public IActionResult AnimalDetail(int id)
         {
-            return RedirectToAction("Details", "Animal", new {id});
-        }
+            AnimalDAL dal = new AnimalDAL();
+            DetailAnimalViewModel vm = new DetailAnimalViewModel();
+
+            vm.AnimalDetail = dal.GetById(id);
+
+            TempData["Animal"] = JsonConvert.SerializeObject(vm);
+			
+            return RedirectToAction("Details", "Animal", new { id });
+		}
 
         [HttpPost]
         public ActionResult AnimalInsert()
         {
-            return RedirectToAction("Insert", "Animal");
+            try
+            {
+				return RedirectToAction("Insert", "Animal");
+			}
+            catch
+            {
+                return View();
+            }
         }
+
+
     }
 }

@@ -1,13 +1,21 @@
-﻿namespace ProyectoMVC_AlexiaSabate.Models.ViewModels
-{
-    public class InsertAnimalViewModel
-    {
-        public int IdAnimal { get; set; }
-        public string NombreAnimal { get; set; }
-        public string Raza { get; set; }
-        public int RIdTipoAnimal { get; set; }
-        public DateTime? FechaNacimiento { get; set; }
+﻿namespace ProyectoMVC_AlexiaSabate.Models.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
-        public List<TipoAnimal> TipoAnimales { get; set; } = new List<TipoAnimal>();
-    }
+public class InsertAnimalViewModel
+{
+    [Required(ErrorMessage = "El nombre es obligatorio.")]
+    public string NombreAnimal { get; set; }
+
+    [Required(ErrorMessage = "Debe señalar una raza.")]
+    public string Raza { get; set; }
+
+    [Required(ErrorMessage = "Debe seleccionar un tipo de animal.")]
+    public int RIdTipoAnimal { get; set; }
+
+	[Required(ErrorMessage = "Debe seleccionar una fecha de nacimiento del animal.")]
+
+	public DateTime? FechaNacimiento { get; set; }
+
+	//Navegación a tipo animal
+	public List<TipoAnimal> TipoAnimales { get; set; } = new List<TipoAnimal>();
 }
