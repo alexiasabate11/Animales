@@ -1,0 +1,34 @@
+﻿@model ProyectoMVC_AlexiaSabate.Models.ViewModels.InsertAnimalViewModel
+
+<h2>Añadir el Animal</h2>
+
+<label>Nombre: </label>
+<input type="text" id="Nombre" name="Nombre" placeholder="Introduce el nombre"/>
+<br />
+<br />
+
+<label>Raza: </label>
+<input type="text" id="Raza" name="Raza" placeholder="Introduce la raza" />
+<br />
+<br />
+
+<label>Tipo de Animal: </label>
+<select>
+	@foreach (var tipo in @Model.TipoAnimales)
+	{
+		<option value="@tipo.TipoDescripcion">@tipo.TipoDescripcion</option>
+	}
+</select>
+<br />
+<br />
+
+<label>Fecha de Nacimiento: </label>
+<input type="date" id="FechaDeNacimiento" name="FechaDeNacimiento" />
+<br />
+<br />
+
+<ul>
+	<form asp-action="Index" asp-controller="Home" method="post" style="display:inline;">
+		<button type="submit">Aceptar</button>
+	</form>
+</ul>
