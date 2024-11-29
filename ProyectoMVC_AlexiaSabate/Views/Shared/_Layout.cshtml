@@ -5,39 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Animales</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
             margin: 20px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .navbar {
+            margin-bottom: 20px;
+            background-color: #343a40;
         }
 
-        li {
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        .navbar-brand {
+            color: #ffffff !important;
+            font-weight: bold;
+        }
+
+        .navbar-brand:hover {
+            color: #ffc107 !important;
+        }
+
+        .card {
+            margin-bottom: 20px;
         }
 
         .animal-id {
             font-weight: bold;
-            margin-right: 10px;
+            color: #6c757d;
+        }
+
+        .btn {
+            margin: 5px 0;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #343a40;
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
-    <div style="border:solid 2px; border-color:red;">
-        <h1>Ejemplo de donde iria el navbar/menu</h1>
-        <div style="border:solid 2px; border-color:green;">
-            @RenderBody()
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">AnimalApp</a>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-        @RenderSection("Scripts", required: false)
+    </nav>
+
+    <div class="container">
+        @RenderBody()
     </div>
+
+    <footer>
+        <p>&copy; 2024 AnimalApp - Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

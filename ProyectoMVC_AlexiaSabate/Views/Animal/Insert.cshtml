@@ -1,28 +1,32 @@
 ﻿@model ProyectoMVC_AlexiaSabate.Models.ViewModels.InsertAnimalViewModel
 
-<h2>Añadir el Animal</h2>
+<h2 class="mb-4">Añadir el Animal</h2>
 
 <form asp-action="Insert" asp-controller="Animal" method="post">
-    <label>Nombre: </label>
-    <input type="text" id="NombreAnimal" name="NombreAnimal" placeholder="Introduce el nombre" />
-    <br /><br />
+    <div class="form-group">
+        <label for="NombreAnimal" class="form-label">Nombre:</label>
+        <input type="text" id="NombreAnimal" name="NombreAnimal" class="form-control" placeholder="Introduce el nombre" />
+    </div>
 
-    <label>Raza: </label>
-    <input type="text" id="Raza" name="Raza" placeholder="Introduce la raza" />
-    <br /><br />
+    <div class="form-group">
+        <label for="Raza" class="form-label">Raza:</label>
+        <input type="text" id="Raza" name="Raza" class="form-control" placeholder="Introduce la raza" />
+    </div>
 
-    <label>Tipo de Animal: </label>
-    <select id="RIdTipoAnimal" name="RIdTipoAnimal">
-        @foreach (var tipo in @Model.TipoAnimales)
-        {
-            <option value="@tipo.IdTipoAnimal">@tipo.TipoDescripcion</option>
-        }
-    </select>
-    <br /><br />
+    <div class="form-group">
+        <label for="RIdTipoAnimal" class="form-label">Tipo de Animal:</label>
+        <select id="RIdTipoAnimal" name="RIdTipoAnimal" class="form-control">
+            @foreach (var tipo in @Model.TipoAnimales)
+            {
+                <option value="@tipo.IdTipoAnimal">@tipo.TipoDescripcion</option>
+            }
+        </select>
+    </div>
 
-    <label>Fecha de Nacimiento: </label>
-    <input type="date" id="FechaNacimiento" name="FechaNacimiento" />
-    <br /><br />
+    <div class="form-group">
+        <label for="FechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+        <input type="date" id="FechaNacimiento" name="FechaNacimiento" class="form-control" />
+    </div>
 
-    <button type="submit">Aceptar</button>
+    <button type="submit" class="btn btn-primary">Aceptar</button>
 </form>

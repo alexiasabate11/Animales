@@ -1,22 +1,28 @@
 ﻿@using ProyectoMVC_AlexiaSabate.Models.ViewModels
 @model AnimalViewModel
 
-<h1>Lista de Animales</h1>
+<h1 class="mb-4">Lista de Animales</h1>
 
-<ul>
+<div class="row">
     @foreach (var animal in Model.Animales)
     {
-        <li>
-            <span class="animal-id">ID: @animal.IdAnimal</span> @animal.TipoDeAnimal.TipoDescripcion
-            <form asp-action="AnimalDetail" asp-controller="Home" method="post" style="display:inline;">
-                <input type="hidden" name="id" value="@animal.IdAnimal" />
-                <button type="submit">Ver Detalles</button>
-            </form>
-        </li>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@animal.TipoDeAnimal.TipoDescripcion</h5>
+                        <p class="card-text">
+                            <span class="animal-id">ID: @animal.IdAnimal</span>
+                        </p>
+                        <form asp-action="AnimalDetail" asp-controller="Home" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@animal.IdAnimal" />
+                            <button type="submit" class="btn btn-primary">Ver Detalles</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
     }
-</ul>
-<ul>
-    <form asp-action="AnimalInsert" asp-controller="Home" method="post" style="display:inline;">
-        <button type="submit">Añadir</button>
-    </form>
-</ul>
+</div>
+
+<form asp-action="AnimalInsert" asp-controller="Home" method="post">
+    <button type="submit" class="btn btn-success">Añadir Animal</button>
+</form>
